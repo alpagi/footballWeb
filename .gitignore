@@ -1,34 +1,41 @@
-# dependencies
+# Bağımlılıklar
 /node_modules
 /.pnp
 .pnp.js
-.yarn/install-state.gz
 
-# testing
+# Test kapsamı
 /coverage
 
-# next.js
-/.next/
-/out/
-
-# production
+# Üretim derlemeleri
 /build
+/dist
 
-# misc
-.DS_Store
-*.pem
+# Ortam değişkenleri
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# debug
+# Günlük dosyaları
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# IDE ve editör klasörleri
+/.idea
+/.vscode
+*.swp
+*.swo
 
-# vercel
-.vercel
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts 
+# Paket yöneticisi dosyaları
+yarn.lock
+package-lock.json
+
+# Next.js
+/.next/
+/out/

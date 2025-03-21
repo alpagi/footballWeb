@@ -1,15 +1,21 @@
-# FutAPP - Canlı Futbol Sonuçları
+# FutAPP - Canlı Futbol Sonuçları Uygulaması
 
-Modern bir kullanıcı arayüzüne sahip futbol sonuçları ve maç bilgileri uygulaması.
+Bu proje, canlı futbol maç sonuçları, fikstür ve haberler için geliştirilmiş bir web uygulamasıdır.
 
 ## Özellikler
 
-- Canlı maç skorları
-- Karanlık/Aydınlık tema desteği
-- Yaklaşan maçlar
+- Canlı maç takibi
 - Maç istatistikleri
-- Futbol haberleri
-- Mobil uyumlu tasarım
+- Ligler ve takımlar
+- Canlı skor güncellemeleri
+- Haberler bölümü
+
+## Teknolojiler
+
+- Next.js
+- React
+- Tailwind CSS
+- TypeScript
 
 ## Kurulum
 
@@ -19,20 +25,14 @@ npm install
 
 # Geliştirme sunucusunu başlat
 npm run dev
+
+# Üretim sürümünü oluştur
+npm run build
+
+# Üretim sürümünü başlat
+npm start
 ```
 
-## Teknolojiler
+## Kullanım
 
-- Next.js 14
-- React
-- TypeScript
-- Tailwind CSS
-- React Icons
-
-## Ekran Görüntüleri
-
-![Uygulama Ekran Görüntüsü](/screenshots/screenshot.png)
-
-## Lisans
-
-MIT
+Uygulama geliştirme modunda `http://localhost:3000` adresinde çalışacaktır.
