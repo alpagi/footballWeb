@@ -4,23 +4,19 @@ import {
   MdSportsFootball,
   MdLeaderboard,
   MdMovie,
-  MdNewspaper,
   MdStarBorder,
+  MdNewspaper,
 } from "react-icons/md";
 import { useTheme } from "../context/ThemeContext";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const leagues = [
-  {
-    name: "Worldcup Qatar 2022",
-    icon: "🏆",
-  },
   {
     name: "Champions League",
     icon: "⚽",
   },
-  { name: "Premier League", icon: "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-  { name: "La Liga", icon: "🇪🇸" },
-  { name: "Ligue 1", icon: "🇫🇷" },
+  { name: "Türkiye Süper Lig", icon: "🇹🇷" },
 ];
 
 const favoriteClubs = [
@@ -31,6 +27,7 @@ const favoriteClubs = [
 
 const Sidebar = () => {
   const { theme } = useTheme();
+  const pathname = usePathname();
 
   return (
     <aside className="w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col transition-colors duration-300">
@@ -42,30 +39,32 @@ const Sidebar = () => {
 
       <div className="flex-1 overflow-y-auto">
         <div className="px-3 py-2">
-          <div className="sidebar-item active">
-            <MdDashboard className="text-xl" />
-            <span>Dashboard</span>
-          </div>
+          <Link href="/">
+            <div className={`sidebar-item ${pathname === "/" ? "active" : ""}`}>
+              <MdDashboard className="text-xl" />
+              <span>Dashboard</span>
+            </div>
+          </Link>
 
-          <div className="sidebar-item">
-            <MdSportsFootball className="text-xl" />
-            <span>Live Football</span>
-          </div>
+          <Link href="/standings">
+            <div
+              className={`sidebar-item ${
+                pathname === "/standings" ? "active" : ""
+              }`}
+            >
+              <MdLeaderboard className="text-xl" />
+              <span>Standings</span>
+            </div>
+          </Link>
 
-          <div className="sidebar-item">
-            <MdLeaderboard className="text-xl" />
-            <span>Standings</span>
-          </div>
-
-          <div className="sidebar-item">
-            <MdMovie className="text-xl" />
-            <span>Highlights</span>
-          </div>
-
-          <div className="sidebar-item">
-            <MdNewspaper className="text-xl" />
-            <span>News</span>
-          </div>
+          <Link href="/news">
+            <div
+              className={`sidebar-item ${pathname === "/news" ? "active" : ""}`}
+            >
+              <MdNewspaper className="text-xl" />
+              <span>News</span>
+            </div>
+          </Link>
         </div>
 
         <div className="mt-4">
@@ -74,16 +73,27 @@ const Sidebar = () => {
           </h3>
           <div className="px-3">
             {leagues.map((league, index) => (
-              <div key={index} className="sidebar-item">
-                <div className="w-6 h-6 relative mr-1">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg">{league.icon}</span>
+              <Link
+                key={index}
+                href={`/league/${encodeURIComponent(league.name)}`}
+              >
+                <div
+                  className={`sidebar-item ${
+                    pathname === `/league/${encodeURIComponent(league.name)}`
+                      ? "active"
+                      : ""
+                  }`}
+                >
+                  <div className="w-6 h-6 relative mr-1">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-lg">{league.icon}</span>
+                    </div>
                   </div>
+                  <span className="text-gray-900 dark:text-white">
+                    {league.name}
+                  </span>
                 </div>
-                <span className="text-gray-900 dark:text-white">
-                  {league.name}
-                </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -94,17 +104,25 @@ const Sidebar = () => {
           </h3>
           <div className="px-3">
             {favoriteClubs.map((club, index) => (
-              <div key={index} className="sidebar-item">
-                <div className="w-6 h-6 relative mr-1">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg">{club.icon}</span>
+              <Link key={index} href={`/club/${encodeURIComponent(club.name)}`}>
+                <div
+                  className={`sidebar-item ${
+                    pathname === `/club/${encodeURIComponent(club.name)}`
+                      ? "active"
+                      : ""
+                  }`}
+                >
+                  <div className="w-6 h-6 relative mr-1">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-lg">{club.icon}</span>
+                    </div>
                   </div>
+                  <span className="text-gray-900 dark:text-white">
+                    {club.name}
+                  </span>
+                  <MdStarBorder className="ml-auto text-yellow-500" />
                 </div>
-                <span className="text-gray-900 dark:text-white">
-                  {club.name}
-                </span>
-                <MdStarBorder className="ml-auto text-yellow-500" />
-              </div>
+              </Link>
             ))}
           </div>
         </div>

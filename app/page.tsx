@@ -5,7 +5,6 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import MatchesSection from "./components/MatchesSection";
 import LiveMatch from "./components/LiveMatch";
-import NewsSection from "./components/NewsSection";
 import { useTheme } from "./context/ThemeContext";
 
 export default function Home() {
@@ -29,7 +28,6 @@ export default function Home() {
           {/* Right sidebar */}
           <aside className="w-80 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 overflow-y-auto p-4 transition-colors duration-300">
             <LiveMatch />
-            <NewsSection />
           </aside>
         </div>
       </div>
